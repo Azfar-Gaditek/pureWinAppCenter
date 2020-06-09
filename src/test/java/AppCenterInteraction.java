@@ -139,7 +139,7 @@ public class AppCenterInteraction extends ConnectionString {
             distributeButton = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/span/div/div/div[2]/div[2]"));
             System.out.println("Clicking on Distribute Option");
             distributeButton.click();
-            Thread.sleep(5000);
+            Thread.sleep(9000);
         } catch (Exception ex) {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail9.png"));
@@ -168,11 +168,11 @@ public class AppCenterInteraction extends ConnectionString {
             downloadButton.click();
             driver.get("chrome://downloads/");
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11.png"));
-            Thread.sleep(120000);
+            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11a.png"));
+            Thread.sleep(60000);
         } catch (Exception ex) {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11.png"));
+            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11b.png"));
         }
     }
 
