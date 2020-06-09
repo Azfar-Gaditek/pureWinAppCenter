@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppCenterInteraction extends ConnectionString {
 
@@ -163,10 +165,27 @@ public class AppCenterInteraction extends ConnectionString {
     public void clickingOnDownloadButton() throws IOException {
         try {
             Thread.sleep(5000);
-            downloadButton = driver.findElement(By.xpath("//a[contains(@class,'_3k76urKAx _74rbA585x _3zf7sutyx _6hRTqZW0x _1iGRM5hHx _3tDpoKRvx _3tDpoKRvx _4TNVoStDx _1P6nIJX2x _7LsMfddpx _7bvYyZbfx')]"));
+            downloadButton = driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M6 32v-2h1')]"));
+            //downloadButton = driver.findElement(By.xpath("//a[contains(@class,'_3k76urKAx _74rbA585x _3zf7sutyx _6hRTqZW0x _1iGRM5hHx _3tDpoKRvx _3tDpoKRvx _4TNVoStDx _1P6nIJX2x _7LsMfddpx _7bvYyZbfx')]"));
             System.out.println("Clicking on Download Button");
             downloadButton.click();
+            Thread.sleep(5000);
+            driver.switchTo().activeElement();
+            WebElement popupDownload = driver.findElement(By.xpath("//a[@class='_4gUP4vh6x _4fixDQ17x']"));
+            popupDownload.click();
+            Thread.sleep(9000);
+            List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(browserTabs.get(1));
+            Thread.sleep(5000);
+            System.out.println("Check Point 1");
+            Assert.assertEquals("App Center", driver.getTitle());
+            System.out.println("Check Point 2");
+            WebElement btnDownload = driver.findElement(By.xpath("//span[contains(text(),'Download')]"));
+            btnDownload.click();
+            System.out.println("Check Point 3");
+            Thread.sleep(5000);
             driver.get("chrome://downloads/");
+            System.out.println("Check Point 4");
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11a.png"));
             Thread.sleep(60000);
