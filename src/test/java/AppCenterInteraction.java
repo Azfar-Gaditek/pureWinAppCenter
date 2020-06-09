@@ -92,7 +92,7 @@ public class AppCenterInteraction extends ConnectionString {
     public void clickingOnDistributeOption() throws InterruptedException {
         Thread.sleep(5000);
         distributeButton = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/span/div/div/div[2]/div[2]"));
-        System.out.println("Clicking of Download Button");
+        System.out.println("Clicking on Distribute Option");
         distributeButton.click();
         Thread.sleep(5000);
     }
