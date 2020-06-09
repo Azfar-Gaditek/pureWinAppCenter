@@ -1,9 +1,15 @@
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
 
 public class AppCenterInteraction extends ConnectionString {
 
@@ -64,21 +70,24 @@ public class AppCenterInteraction extends ConnectionString {
         Thread.sleep(3000);
         //driver.switchTo().activeElement();
         password = driver.findElement(By.xpath("//*[@id=\"i0118\"]"));
-        System.out.println("Test Check Point 1");
         password.sendKeys(pass);
-        System.out.println("Test Check Point 2");
         waitForControl(finalSignInButton = driver.findElement(By.id("idSIButton9")));
     }
 
     @Test(priority = 7, dependsOnMethods = {"enteringPassword"})
-    public void clickingOnSignInFinalButton() throws InterruptedException {
-        Thread.sleep(5000);
-        finalSignInButton = driver.findElement(By.id("idSIButton9"));
-        finalSignInButton.click();
-        Thread.sleep(5000);
-        dashboardLogo = driver.findElement(By.xpath("//div[@class='_44xW5tefx _3hEGIAIGx _4VRKoDHBx IlREmqz0x _5N2hOvNFx']"));
-        dashboardLogo.isDisplayed();
-        System.out.println("User Login Successfully...!!!");
+    public void clickingOnSignInFinalButton() throws InterruptedException, IOException {
+        try{
+            Thread.sleep(5000);
+            finalSignInButton = driver.findElement(By.id("idSIButton9"));
+            finalSignInButton.click();
+            Thread.sleep(9000);
+            dashboardLogo = driver.findElement(By.xpath("//div[@class='_44xW5tefx _3hEGIAIGx _4VRKoDHBx IlREmqz0x _5N2hOvNFx']"));
+            dashboardLogo.isDisplayed();
+            System.out.println("User Login Successfully...!!!");
+        }catch (Exception ex){
+            File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\PaymentMethodNotFound.png"));
+        }
     }
 
     @Test(priority = 8)
@@ -101,7 +110,7 @@ public class AppCenterInteraction extends ConnectionString {
     public void clickingOnReleaseLink(){
         driver.switchTo().activeElement();
         releaseLink = driver.findElement(By.xpath("//body/div[@id='app']/div[contains(@class,'_6CY9PqIJx')]/div[@id='layout-viewport']/div[contains(@class,'_3Yoa7i6Cx _1ZSuYu4hx _3yG0Wp9xx _1ZSuYu4hx')]/div[@id='page-in-primary']/div[contains(@class,'_4hta4qYox')]/div[contains(@class,'_6dNIBX5mx krhTRqZvx _5RYKG3jbx _6dNIBX5mx _5BUBEsgkx _6vC3eK2xx edgeToEdge')]/div[contains(@class,'_3ntfDwIyx _5sJtSbnSx _7LsMfddpx _15KxxJDxx _5iLGAshSx _4FHRj32Ux _6tqQ8rWSx')]/div[contains(@class,'_6dNIBX5mx krhTRqZvx')]/div/div[2]"));
-        System.out.println("Clicking On Release Link");
+        System.out.println("Clicking on Release Link");
         releaseLink.click();
     }
 
