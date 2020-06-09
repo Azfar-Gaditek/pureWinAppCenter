@@ -166,6 +166,9 @@ public class AppCenterInteraction extends ConnectionString {
             downloadButton = driver.findElement(By.xpath("//a[contains(@class,'_3k76urKAx _74rbA585x _3zf7sutyx _6hRTqZW0x _1iGRM5hHx _3tDpoKRvx _3tDpoKRvx _4TNVoStDx _1P6nIJX2x _7LsMfddpx _7bvYyZbfx')]"));
             System.out.println("Clicking on Download Button");
             downloadButton.click();
+            driver.get("chrome://downloads/");
+            File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11.png"));
             Thread.sleep(120000);
         } catch (Exception ex) {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
