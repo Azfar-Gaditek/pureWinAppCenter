@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AppCenterInteraction extends ConnectionString {
 
@@ -188,7 +186,7 @@ public class AppCenterInteraction extends ConnectionString {
             System.out.println("Check Point 4");
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11a.png"));
-            Thread.sleep(60000);
+            Thread.sleep(120000);
         } catch (Exception ex) {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11b.png"));
