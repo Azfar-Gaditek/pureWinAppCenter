@@ -2,10 +2,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 
 public class ConnectionString {
     public static WebDriver driver;
@@ -13,14 +12,18 @@ public class ConnectionString {
     @BeforeClass
     public void initialization() {
         try {
-            System.out.println("Setup Chrome Driver");
+            System.out.println("Setup Firefox Driver");
+            System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin\\geckodriver.exe");
+            System.out.println("Initialize Firefox Driver");
+            driver = new FirefoxDriver();
+/*            System.out.println("Setup Chrome Driver");
             WebDriverManager.chromedriver().setup();
-            System.out.println("Setup Chrome Options");
             ChromeOptions options = new ChromeOptions();
+            System.out.println("Setup Chrome Options");
             options.addArguments("--incognito");
             //options.addArguments("--headless");
-            System.out.println("Initialize Chrome Driver with Headless Property");
-            driver = new ChromeDriver(options);
+            System.out.println("Initialize Chrome Driver in Incognito Mode");
+            driver = new ChromeDriver(options);*/
         } catch (Exception ex) {
             ex.getMessage();
             ex.printStackTrace();
