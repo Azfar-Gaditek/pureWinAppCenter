@@ -28,7 +28,7 @@ public class AppCenterInteraction extends ConnectionString {
     @Test(priority = 1)
     public void navigateToAppCenter() throws IOException {
         try {
-            driver.get("https://appcenter.ms/");
+            driver.navigate().to("https://appcenter.ms/");
             driver.manage().window().maximize();
             Assert.assertEquals("Visual Studio App Center | iOS, Android, Xamarin & React Native", driver.getTitle());
             System.out.println("App Center Title Verified");
@@ -149,8 +149,8 @@ public class AppCenterInteraction extends ConnectionString {
     @Test(priority = 10)
     public void clickingOnReleaseLink() throws IOException {
         try {
-            driver.switchTo().activeElement();
-            releaseLink = driver.findElement(By.xpath("//body/div[@id='app']/div[contains(@class,'_6CY9PqIJx')]/div[@id='layout-viewport']/div[contains(@class,'_3Yoa7i6Cx _1ZSuYu4hx _3yG0Wp9xx _1ZSuYu4hx')]/div[@id='page-in-primary']/div[contains(@class,'_4hta4qYox')]/div[contains(@class,'_6dNIBX5mx krhTRqZvx _5RYKG3jbx _6dNIBX5mx _5BUBEsgkx _6vC3eK2xx edgeToEdge')]/div[contains(@class,'_3ntfDwIyx _5sJtSbnSx _7LsMfddpx _15KxxJDxx _5iLGAshSx _4FHRj32Ux _6tqQ8rWSx')]/div[contains(@class,'_6dNIBX5mx krhTRqZvx')]/div/div[2]"));
+            //driver.switchTo().activeElement();
+            releaseLink = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[3]/div[1]/div/div[3]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]"));
             System.out.println("Clicking on Release Link");
             releaseLink.click();
         } catch (Exception ex) {

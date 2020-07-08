@@ -3,8 +3,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
 
 public class ConnectionString {
     public static WebDriver driver;
@@ -12,18 +14,17 @@ public class ConnectionString {
     @BeforeClass
     public void initialization() {
         try {
-            System.out.println("Setup Firefox Driver");
+/*            System.out.println("Setup Firefox Driver");
             System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin\\geckodriver.exe");
             System.out.println("Initialize Firefox Driver");
-            driver = new FirefoxDriver();
-/*            System.out.println("Setup Chrome Driver");
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
+            driver = new FirefoxDriver();*/
+            System.out.println("Setup Chrome Driver");
+            WebDriverManager.operadriver().setup();
+            OperaDriver options = new OperaDriver();
             System.out.println("Setup Chrome Options");
-            options.addArguments("--incognito");
+            //options.addArguments("--incognito");
             //options.addArguments("--headless");
-            System.out.println("Initialize Chrome Driver in Incognito Mode");
-            driver = new ChromeDriver(options);*/
+            driver = new OperaDriver();
         } catch (Exception ex) {
             ex.getMessage();
             ex.printStackTrace();
