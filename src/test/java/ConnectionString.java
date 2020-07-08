@@ -18,10 +18,10 @@ public class ConnectionString {
             System.setProperty("webdriver.gecko.driver", "C:\\WebDriver\\bin\\geckodriver.exe");
             System.out.println("Initialize Firefox Driver");
             driver = new FirefoxDriver();*/
-            System.out.println("Setup Chrome Driver");
+            System.out.println("Setup Opera Driver");
             WebDriverManager.operadriver().setup();
-            OperaDriver options = new OperaDriver();
-            System.out.println("Setup Chrome Options");
+            //ChromeOptions options = new ChromeOptions();
+            //System.out.println("Setup Chrome Options");
             //options.addArguments("--incognito");
             //options.addArguments("--headless");
             driver = new OperaDriver();
