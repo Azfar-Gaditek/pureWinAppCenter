@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -186,7 +187,7 @@ public class AppCenterInteraction extends ConnectionString {
             System.out.println("Check Point 4");
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11a.png"));
-            Thread.sleep(120000);
+            Thread.sleep(30000);
         } catch (Exception ex) {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile, new File("D:\\ErrorScrenshots\\testFail11b.png"));

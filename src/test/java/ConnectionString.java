@@ -7,9 +7,14 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 
 public class ConnectionString {
     public static WebDriver driver;
+    File myFile;
 
     @BeforeClass
     public void initialization() {
@@ -34,13 +39,29 @@ public class ConnectionString {
     @AfterClass
     public void teardown() {
         try {
+            System.out.println("Unzip PureVPN Downloaded Zip File");
+            executeBatchUnZipPureVPNDownloadedFile();
             System.out.println("Closing Driver");
-            //driver.close();
+            driver.close();
             System.out.println("Quiting Driver");
-            //driver.quit();
+            driver.quit();
         } catch (Exception ex) {
             ex.getMessage();
             ex.printStackTrace();
+        }
+    }
+
+    public void executeBatchUnZipPureVPNDownloadedFile() {
+        String batFilePath = "D:\\Backup\\appCenter_purewin\\src\\test\\java\\unZipPureVPNDownloadedFile.bat";
+        if ((Desktop.isDesktopSupported())) {
+            try {
+                myFile = new File(batFilePath);
+                Desktop.getDesktop().open(myFile);
+                System.out.println("unZip PureVPN Downloaded File");
+            } catch (IOException | IllegalArgumentException ex) {
+                System.err.println("Either there is no application found which is associated " +
+                        "with \\n the file you want to work with or the file doesn't exist! \\n\\n" + batFilePath);
+            }
         }
     }
 }
